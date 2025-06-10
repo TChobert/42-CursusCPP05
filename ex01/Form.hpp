@@ -22,14 +22,14 @@ class Form {
 
 	const std::string	_name;
 	bool				_isSigned;
-	const unsigned int	_gradeRequieredtoSign;
-	const unsigned int	_gradeRequieredtoExecute;
+	const unsigned int	_gradetoSign;
+	const unsigned int	_gradetoExecute;
 
 	public:
 
 	Form(void);
-	Form(const std::string& name, bool isSigned, const unsigned int gradeRequieredToSign,
-			const unsigned int gradeRequieredToExecute);
+	Form(const std::string& name, bool isSigned, const unsigned int gradeToSign,
+			const unsigned int gradeToExecute);
 	Form(const Form& other);
 	Form&	operator=(const Form& other);
 	~Form(void);

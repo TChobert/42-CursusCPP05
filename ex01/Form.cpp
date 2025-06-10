@@ -14,31 +14,31 @@
 
 ///// CANONICAL /////
 
-Form::Form(void) : _name("Default"), _isSigned(false), _gradeRequieredtoSign(150),
-	_gradeRequieredtoExecute(150) {
+Form::Form(void) : _name("Default"), _isSigned(false), _gradetoSign(150),
+	_gradetoExecute(150) {
 	//std::cout << "Form: default constructor called" << std::endl;
-	if (_gradeRequieredtoSign > 150 ||  _gradeRequieredtoExecute > 150) {
+	if (_gradetoSign > 150 ||  _gradetoExecute > 150) {
 		throw (GradeTooLowException());
 	}
-	if (_gradeRequieredtoSign < 1 || _gradeRequieredtoExecute < 1) {
+	if (_gradetoSign < 1 || _gradetoExecute < 1) {
 		throw (GradeTooHighException());
 	}
 }
 
-Form::Form(const std::string& name, bool isSigned, const unsigned int gradeRequieredToSign,
-	const unsigned int gradeRequieredToExecute) :_name(name), _isSigned(isSigned),
-	_gradeRequieredtoSign(gradeRequieredToSign), _gradeRequieredtoExecute(gradeRequieredToExecute) {
+Form::Form(const std::string& name, bool isSigned, const unsigned int gradeToSign,
+	const unsigned int gradeToExecute) :_name(name), _isSigned(isSigned),
+	_gradetoSign(gradeToSign), _gradetoExecute(gradeToExecute) {
 	//std::cout << "Form: parametrized constructor called" << std::endl;
-	if (_gradeRequieredtoSign > 150 ||  _gradeRequieredtoExecute > 150) {
+	if (gradeToSign > 150 ||  gradeToExecute > 150) {
 		throw (GradeTooLowException());
 		}
-	if (_gradeRequieredtoSign < 1 || _gradeRequieredtoExecute < 1) {
+	if (gradeToSign < 1 || gradeToExecute < 1) {
 		throw (GradeTooHighException());
 	}
 }
 
 Form::Form(const Form& other) : _name(other._name), _isSigned(other._isSigned),
-	_gradeRequieredtoSign(other._gradeRequieredtoSign), _gradeRequieredtoExecute(other._gradeRequieredtoExecute) {
+	_gradetoSign(other._gradetoSign), _gradetoExecute(other._gradetoExecute) {
 	//std::cout << "Form: copy constructor called" << std::endl;
 }
 
