@@ -18,6 +18,19 @@ int	main(void) {
 	Bureaucrat	middle("Joseph", 95);
 	Bureaucrat	copy;
 
+	try {
+		Bureaucrat	invalidToLow("Aouch", 175);
+	}
+	catch (const std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		Bureaucrat	invalidToHigh("Aie", 0);
+	}
+	catch (const std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+
 	copy = stagiaire;
 
 	std::cout << stagiaire.getName() << std::endl;

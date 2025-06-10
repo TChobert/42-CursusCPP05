@@ -20,6 +20,12 @@ Bureaucrat::Bureaucrat(void) : _name("Stagiaire"), _grade(150) {
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade(grade) {
 	//std::cout << "Bureaucrat: parametrized constructor called" :: std::endl;
+	if (grade > 150) {
+		throw (GradeToLowException());
+	}
+	if (grade < 1) {
+		throw (GradeToHighException());
+	}
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade) {
@@ -47,3 +53,13 @@ std::string	Bureaucrat::getName(void) const {
 int	Bureaucrat::getGrade(void) const {
 	return (_grade);
 }
+
+///// EXCEPTIONS /////
+
+const char	*Bureaucrat::GradeToHighException::what() const throw() {
+	return ("Error: Grade is too high!");
+}
+
+const char	*Bureaucrat::GradeToLowException::what() const throw() {
+	return ("Error: Grade is too low!");
+};

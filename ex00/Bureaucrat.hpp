@@ -33,6 +33,13 @@ class Bureaucrat {
 
 	std::string	getName(void) const;
 	int			getGrade(void) const;
+
+	class GradeToHighException: public std::exception {
+		virtual const char *what() const throw();
+	};
+	class GradeToLowException: public std::exception {
+		virtual const char *what() const throw();
+	};
 };
 
 #endif
