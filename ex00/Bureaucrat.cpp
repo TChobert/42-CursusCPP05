@@ -54,6 +54,22 @@ int	Bureaucrat::getGrade(void) const {
 	return (_grade);
 }
 
+void	Bureaucrat::incrementGrade(unsigned int value) {
+	_grade -= value;
+	if (_grade < 1) {
+		throw (GradeToHighException());
+	}
+	std::cout << _name << ": is now at grade: " << _grade << std::endl;
+}
+
+void	Bureaucrat::decrementGrade(unsigned int value) {
+	_grade += value;
+	if (_grade > 150) {
+		throw (GradeToLowException());
+	}
+	std::cout << _name << ": is now at grade: " << _grade << std::endl;
+}
+
 ///// EXCEPTIONS /////
 
 const char	*Bureaucrat::GradeToHighException::what() const throw() {
