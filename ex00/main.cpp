@@ -11,11 +11,9 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "BureaucratDisplayer.hpp"
 
 int	main(void) {
 
-	BureaucratDisplayer	displayer;
 	Bureaucrat	stagiaire;
 	Bureaucrat	middle("Joseph", 95);
 	Bureaucrat	copy;
@@ -47,8 +45,8 @@ int	main(void) {
 	catch (const std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-	displayer.displayInfo(stagiaire);
-	displayer.displayInfo(middle);
-	displayer.displayInfo(copy);
+	std::cout << stagiaire.getName() << ": " << stagiaire.getGrade() << std::endl;
+	std::cout << middle.getName() << ": " << middle.getGrade() << std::endl;
+	std::cout << copy.getName() << ": " << copy.getGrade() << std::endl;
 	return (EXIT_SUCCESS);
 }
