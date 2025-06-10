@@ -45,8 +45,8 @@ int	main(void) {
 	catch (const std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-	std::cout << stagiaire.getName() << ": " << stagiaire.getGrade() << std::endl;
-	std::cout << middle.getName() << ": " << middle.getGrade() << std::endl;
-	std::cout << copy.getName() << ": " << copy.getGrade() << std::endl;
+	std::cout << stagiaire << std::endl;
+	std::cout << middle << std::endl;
+	std::cout << copy << std::endl;
 	return (EXIT_SUCCESS);
 }
