@@ -11,12 +11,45 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main(void) {
 
 	Bureaucrat	stagiaire;
 	Bureaucrat	middle("Joseph", 95);
 	Bureaucrat	copy;
+	Form		formA;
+
+	std::cout << formA << std::endl;
+
+	// INVALID FORMS //
+
+	try {
+		Form	invalidFormLow("Invalid", false, 156, 22);
+	}
+	catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		Form	invalidFormHigh("Invalid", false, 0, 22);
+	}
+	catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+		try {
+		Form	invalidFormLow("Invalid", false, 22, 185);
+	}
+	catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		Form	invalidFormHigh("Invalid", false, 22, -12);
+	}
+	catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+
+	// INVALID BUREAUCRATS //
 
 	try {
 		Bureaucrat	invalidToLow("Aouch", 175);
@@ -45,6 +78,7 @@ int	main(void) {
 	catch (const std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
+
 	std::cout << stagiaire << std::endl;
 	std::cout << middle << std::endl;
 	std::cout << copy << std::endl;

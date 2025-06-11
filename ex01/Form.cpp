@@ -56,7 +56,28 @@ Form::~Form(void) {
 
 ///// MEMBERS FUNCTIONS /////
 
+std::string	Form::getName(void) const {
+	return (_name);
+}
 
+bool	Form::getSignStatus(void) const {
+	return (_isSigned);
+}
+
+unsigned int	Form::getGradeToSign(void) const {
+	return (_gradetoSign);
+}
+
+unsigned int	Form::getGradeToExecute(void) const {
+	return (_gradetoExecute);
+}
+
+void	Form::beSigned(const Bureaucrat& bureaucrat) {
+	if (bureaucrat.getGrade() > _gradetoSign) {
+		throw GradeTooLowException();
+	}
+	_isSigned = true;
+}
 
 ///// EXCEPTIONS /////
 
@@ -66,4 +87,11 @@ const char 	*Form::GradeTooHighException::what() const throw() {
 
 const char	*Form::GradeTooLowException::what() const throw() {
 	return ("Form: grade is too low!");
+}
+
+///// OPERATOR << /////
+
+std::ostream&	operator<<(std::ostream& os, const Form& form) {
+	os << "Form name: " << form.getName() << ", signed: " << form.getSignStatus() << ", requiered grade to sign: " << form.getGradeToSign() << ", requiered grade to execute: " << form.getGradeToExecute() << ".";
+	return (os);
 }

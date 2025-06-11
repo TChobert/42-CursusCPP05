@@ -15,6 +15,7 @@
 
 # include <string>
 # include <iostream>
+# include "Bureaucrat.hpp"
 
 class Form {
 
@@ -33,6 +34,12 @@ class Form {
 	Form(const Form& other);
 	Form&	operator=(const Form& other);
 	~Form(void);
+
+	std::string		getName(void) const;
+	bool			getSignStatus(void) const;
+	unsigned int	getGradeToSign(void) const;
+	unsigned int	getGradeToExecute(void) const;
+	void			beSigned(const Bureaucrat& bureaucrat);
 
 	class GradeTooHighException: public std::exception {
 		virtual const char *what() const throw();

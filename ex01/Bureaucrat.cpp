@@ -19,12 +19,12 @@ Bureaucrat::Bureaucrat(void) : _name("Stagiaire"), _grade(150) {
 }
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name), _grade(grade) {
-	//std::cout << "Bureaucrat: parametrized constructor called" :: std::endl;
+	//std::cout << "Bureaucrat: parametrized constructor called" << std::endl;
 	if (grade > 150) {
-		throw (GradeTooLowException());
+		throw GradeTooLowException();
 	}
 	if (grade < 1) {
-		throw (GradeTooHighException());
+		throw GradeTooHighException();
 	}
 }
 
@@ -55,18 +55,18 @@ int	Bureaucrat::getGrade(void) const {
 }
 
 void	Bureaucrat::incrementGrade(unsigned int value) {
-	_grade -= value;
-	if (_grade < 1) {
-		throw (GradeTooHighException());
+	if ((_grade - value) < 1) {
+		throw GradeTooHighException();
 	}
+	_grade -= value;
 	std::cout << _name << ": is now at grade: " << _grade << std::endl;
 }
 
 void	Bureaucrat::decrementGrade(unsigned int value) {
-	_grade += value;
-	if (_grade > 150) {
-		throw (GradeTooLowException());
+	if ((_grade + value) > 150) {
+		throw GradeTooLowException();
 	}
+	_grade += value;
 	std::cout << _name << ": is now at grade: " << _grade << std::endl;
 }
 
