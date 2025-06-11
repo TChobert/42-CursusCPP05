@@ -79,6 +79,13 @@ int	main(void) {
 		std::cout << e.what() << std::endl;
 	}
 
+	// INVALID FORM SIGN ATTEMPT
+
+	Form	formToSign("ToSign", false, 20, 50);
+	Bureaucrat	signer("Random", 25);
+
+	signer.signForm(formToSign);
+
 	std::cout << stagiaire << std::endl;
 	std::cout << middle << std::endl;
 	std::cout << copy << std::endl;

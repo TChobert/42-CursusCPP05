@@ -70,6 +70,15 @@ void	Bureaucrat::decrementGrade(unsigned int value) {
 	std::cout << _name << ": is now at grade: " << _grade << std::endl;
 }
 
+void	Bureaucrat::signForm(Form& form) const {
+	try {
+		form.beSigned(*this);
+	}
+	catch (const std::exception& e) {
+		std::cout << _name << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
 ///// EXCEPTIONS /////
 
 const char	*Bureaucrat::GradeTooHighException::what() const throw() {
