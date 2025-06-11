@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 ///// CANONICAL /////
 
@@ -73,7 +74,7 @@ unsigned int	Form::getGradeToExecute(void) const {
 }
 
 void	Form::beSigned(const Bureaucrat& bureaucrat) {
-	if (bureaucrat.getGrade() > _gradetoSign) {
+	if (static_cast<unsigned int>(bureaucrat.getGrade()) > _gradetoSign) {
 		throw GradeTooLowException();
 	}
 	_isSigned = true;
