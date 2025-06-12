@@ -41,4 +41,23 @@ RobotomyRequestForm::~RobotomyRequestForm(void) {
 
 ///// MEMBERS FUNCTIONS /////
 
+std::string	RobotomyRequestForm::getTarget(void) const {
+	return (_target);
+}
 
+void	RobotomyRequestForm::execute(const Bureaucrat& executor) const {
+
+	if (getSignStatus() == false) {
+			throw FormNotSignedException();
+		}
+		if (executor.getGrade() > getGradeToExecute()) {
+			throw GradeTooLowException();
+		}
+		std::cout << "Makes some drilling noises..." << std::endl;
+		if (rand() % 2 == 0) {
+			std::cout << getTarget() << " has been robotomized successfully!" << std::endl;
+		}
+		else {
+			std::cout << getTarget() << ": robotomy failed!" << std::endl;
+		}
+}

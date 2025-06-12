@@ -14,6 +14,7 @@
 # define ROBOTOMYREQUESTFORM_HPP
 
 # include "AForm.hpp"
+# include "Bureaucrat.hpp"
 
 class RobotomyRequestForm : public AForm {
 
@@ -29,7 +30,8 @@ class RobotomyRequestForm : public AForm {
 	RobotomyRequestForm&	operator=(const RobotomyRequestForm& other);
 	~RobotomyRequestForm(void);
 
-	void	execute(const Bureaucrat& executor);
+	std::string	getTarget(void) const;
+	void		execute(const Bureaucrat& executor) const;
 };
 
 #endif

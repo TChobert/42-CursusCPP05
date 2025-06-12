@@ -14,6 +14,7 @@
 # define PRESIDENTIALPARDONFORM_HPP
 
 # include "AForm.hpp"
+# include "Bureaucrat.hpp"
 
 class PresidentialPardonForm : public AForm {
 
@@ -29,7 +30,8 @@ class PresidentialPardonForm : public AForm {
 	PresidentialPardonForm&	operator=(const PresidentialPardonForm& other);
 	~PresidentialPardonForm(void);
 
-	void	execute(const Bureaucrat& executor);
+	std::string	getTarget(void) const;
+	void		execute(const Bureaucrat& executor) const;
 };
 
 #endif

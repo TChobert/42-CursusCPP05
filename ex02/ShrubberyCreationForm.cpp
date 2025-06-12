@@ -41,3 +41,11 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void) {
 
 ///// MEMBERS FUNCTIONS /////
 
+void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
+	if (getSignStatus() == false) {
+		throw FormNotSignedException();
+	}
+	if (executor.getGrade() > getGradeToExecute()) {
+		throw GradeTooLowException();
+	}
+}

@@ -41,3 +41,16 @@ PresidentialPardonForm::~PresidentialPardonForm(void) {
 
 ///// MEMBERS FUNCTIONS /////
 
+std::string	PresidentialPardonForm::getTarget(void) const {
+	return (_target);
+}
+
+void	PresidentialPardonForm::execute(const Bureaucrat& executor) const {
+	if (getSignStatus() == false) {
+		throw FormNotSignedException();
+	}
+	if (executor.getGrade() > getGradeToExecute()) {
+		throw GradeTooLowException();
+	}
+	std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+}
