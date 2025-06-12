@@ -48,4 +48,8 @@ void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 	if (executor.getGrade() > getGradeToExecute()) {
 		throw GradeTooLowException();
 	}
+	std::ofstream	file((_target + "_shrubbery").c_str());
+	for (size_t i = 0; i < 3; ++i) {
+		
+	}
 }
