@@ -81,10 +81,17 @@ int	main(void) {
 
 	// INVALID FORM SIGN ATTEMPT
 
-	Form	formToSign("ToSign", false, 20, 50);
+	Form	formToSignInvalid("ToSignInvalid", false, 20, 50);
 	Bureaucrat	signer("Random", 25);
 
-	signer.signForm(formToSign);
+	signer.signForm(formToSignInvalid);
+
+	// VALID FORM SIGN ATTEMPT
+
+	Form	formToSignValid("ToSignInvalid", false, 20, 50);
+	Bureaucrat	signer2("Random2", 15);
+
+	signer2.signForm(formToSignValid);
 
 	std::cout << stagiaire << std::endl;
 	std::cout << middle << std::endl;
