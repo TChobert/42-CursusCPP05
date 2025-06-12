@@ -31,14 +31,18 @@ endif
 
 SRCS += main.cpp
 SRCS += Bureaucrat.cpp
-SRCS += Form.cpp
+SRCS += AForm.cpp
+SRCS += RobotomyRequestForm.cpp
+SRCS += PresidentialPardonForm.cpp
 
 ## INCLUDES ##
 
 INCLUDES_DIR := .
 
 INCLUDES += Bureaucrat.hpp
-INCLUDES += Form.hpp
+INCLUDES += AForm.hpp
+INCLUDES += RobotomyRequestForm.hpp
+INCLUDES += PresidentialPardonForm.hpp
 
 ## OBJECTS ##
 

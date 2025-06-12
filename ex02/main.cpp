@@ -11,43 +11,16 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int	main(void) {
 
 	Bureaucrat	stagiaire;
 	Bureaucrat	middle("Joseph", 95);
+	Bureaucrat	superior("Superior", 1);
 	Bureaucrat	copy;
-	Form		formA;
-
-	std::cout << formA << std::endl;
-
-	// INVALID FORMS //
-
-	try {
-		Form	invalidFormLow("Invalid", false, 156, 22);
-	}
-	catch (const std::exception& e) {
-		std::cout << e.what() << std::endl;
-	}
-	try {
-		Form	invalidFormHigh("Invalid", false, 0, 22);
-	}
-	catch (const std::exception& e) {
-		std::cout << e.what() << std::endl;
-	}
-		try {
-		Form	invalidFormLow("Invalid", false, 22, 185);
-	}
-	catch (const std::exception& e) {
-		std::cout << e.what() << std::endl;
-	}
-	try {
-		Form	invalidFormHigh("Invalid", false, 22, -12);
-	}
-	catch (const std::exception& e) {
-		std::cout << e.what() << std::endl;
-	}
 
 	// INVALID BUREAUCRATS //
 
@@ -79,22 +52,31 @@ int	main(void) {
 		std::cout << e.what() << std::endl;
 	}
 
-	// INVALID FORM SIGN ATTEMPT
+	// VALID FORM EXECUTIONS
 
-	Form	formToSignInvalid("ToSignInvalid", false, 20, 50);
-	Bureaucrat	signer("Random", 25);
+	AForm	*robotomy = new RobotomyRequestForm("Bender");
+	AForm	*pardon = new PresidentialPardonForm("Joe");
+	middle.signForm(*robotomy);
+	middle.executeForm(*robotomy);
+	superior.signForm(*pardon);
+	superior.executeForm(*pardon);
 
-	signer.signForm(formToSignInvalid);
+	// INVALID FORM EXECUTIONS
 
-	// VALID FORM SIGN ATTEMPT
+	RobotomyRequestForm	*robotomy2 = new RobotomyRequestForm("Lala");
 
-	Form	formToSignValid("ToSignInvalid", false, 20, 50);
-	Bureaucrat	signer2("Random2", 15);
-
-	signer2.signForm(formToSignValid);
+	stagiaire.signForm(*robotomy2);
+	stagiaire.executeForm(*robotomy2);
+	superior.signForm(*robotomy2);
+	stagiaire.executeForm(*robotomy2);
 
 	std::cout << stagiaire << std::endl;
 	std::cout << middle << std::endl;
 	std::cout << copy << std::endl;
+
+	delete robotomy;
+	delete pardon;
+	delete robotomy2;
+
 	return (EXIT_SUCCESS);
 }

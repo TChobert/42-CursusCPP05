@@ -65,11 +65,11 @@ bool	AForm::getSignStatus(void) const {
 	return (_isSigned);
 }
 
-unsigned int	AForm::getGradeToSign(void) const {
+int	AForm::getGradeToSign(void) const {
 	return (_gradetoSign);
 }
 
-unsigned int	AForm::getGradeToExecute(void) const {
+int	AForm::getGradeToExecute(void) const {
 	return (_gradetoExecute);
 }
 

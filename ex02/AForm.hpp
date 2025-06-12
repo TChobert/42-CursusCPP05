@@ -38,8 +38,8 @@ class AForm {
 
 	std::string		getName(void) const;
 	bool			getSignStatus(void) const;
-	unsigned int	getGradeToSign(void) const;
-	unsigned int	getGradeToExecute(void) const;
+	int				getGradeToSign(void) const;
+	int				getGradeToExecute(void) const;
 	void			beSigned(const Bureaucrat& bureaucrat);
 	virtual void	execute(const Bureaucrat& executor) const = 0;
 
