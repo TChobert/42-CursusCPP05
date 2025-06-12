@@ -74,7 +74,7 @@ unsigned int	Form::getGradeToExecute(void) const {
 }
 
 void	Form::beSigned(const Bureaucrat& bureaucrat) {
-	if (static_cast<unsigned int>(bureaucrat.getGrade()) > _gradetoSign) {
+	if (bureaucrat.getGrade() > _gradetoSign) {
 		throw GradeTooLowException();
 	}
 	_isSigned = true;

@@ -24,8 +24,8 @@ class Form {
 
 	const std::string	_name;
 	bool				_isSigned;
-	const unsigned int	_gradetoSign;
-	const unsigned int	_gradetoExecute;
+	const int			_gradetoSign;
+	const int			_gradetoExecute;
 
 	public:
 
