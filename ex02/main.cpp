@@ -16,67 +16,68 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
+# define NC "\e[0m"
+# define YELLOW "\e[1;33m"
+# define RED "\x1B[31m"
+# define GREEN "\x1B[32m"
+# define BLUE "\x1B[34m"
+# define RESET "\x1B[0m"
+
 int	main(void) {
 
 	Bureaucrat	stagiaire;
-	Bureaucrat	middle("Joseph", 95);
+	Bureaucrat	middle("Joseph", 25);
 	Bureaucrat	superior("Superior", 1);
-	Bureaucrat	copy;
-
-	// INVALID BUREAUCRATS //
-
-	try {
-		Bureaucrat	invalidToLow("Aouch", 175);
-	}
-	catch (const std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-	try {
-		Bureaucrat	High("Aie", 0);
-	}
-	catch (const std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-
-	copy = stagiaire;
-
-	try {
-		stagiaire.decrementGrade(22);
-	}
-	catch (const std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-	try {
-		middle.incrementGrade(50);
-	}
-	catch (const std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
 
 	// VALID FORM EXECUTIONS
+
+	std::cout << GREEN << "======> VALID FORM EXECUTIONS <======" << std::endl;
 
 	AForm	*robotomy = new RobotomyRequestForm("Bender");
 	AForm	*pardon = new PresidentialPardonForm("Joe");
 	AForm	*shrubbery = new ShrubberyCreationForm("shrub");
+
 	middle.signForm(*robotomy);
 	middle.executeForm(*robotomy);
+	std::cout << std::endl;
+
 	superior.signForm(*pardon);
 	superior.executeForm(*pardon);
+	std::cout << std::endl;
+
 	superior.signForm(*shrubbery);
 	superior.executeForm(*shrubbery);
 
+	std::cout << RESET << std::endl;
+
 	// INVALID FORM EXECUTIONS
 
-	RobotomyRequestForm	*robotomy2 = new RobotomyRequestForm("Lala");
+	std::cout << RED << "======> INVALID FORM EXECUTIONS <======" << std::endl;
+
+	AForm	*robotomy2 = new RobotomyRequestForm("Lala");
+	AForm	*shrubbery2 = new ShrubberyCreationForm("shrub2");
+	AForm	*pardon2 = new PresidentialPardonForm("pardon2");
 
 	stagiaire.signForm(*robotomy2);
 	stagiaire.executeForm(*robotomy2);
 	superior.signForm(*robotomy2);
 	stagiaire.executeForm(*robotomy2);
+	std::cout << std::endl;
 
-	std::cout << stagiaire << std::endl;
-	std::cout << middle << std::endl;
-	std::cout << copy << std::endl;
+	stagiaire.signForm(*shrubbery2);
+	stagiaire.executeForm(*shrubbery2);
+	superior.signForm(*shrubbery2);
+	stagiaire.executeForm(*shrubbery2);
+	std::cout << std::endl;
+
+	stagiaire.signForm(*pardon2);
+	stagiaire.executeForm(*pardon2);
+	superior.signForm(*pardon2);
+	stagiaire.executeForm(*pardon2);
+
+	std::cout << RESET << std::endl;
+
+	// CLEANUP
 
 	delete robotomy;
 	delete pardon;
