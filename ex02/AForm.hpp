@@ -15,7 +15,6 @@
 
 # include <iostream>
 # include <string>
-# include <iostream>
 
 class	Bureaucrat;
 
@@ -31,7 +30,7 @@ class AForm {
 	public:
 
 	AForm(void);
-	AForm(const std::string& name, bool isSigned, const int gradeToSign,
+	AForm(const std::string& name, const int gradeToSign,
 			const int gradeToExecute);
 	AForm(const AForm& other);
 	AForm&	operator=(const AForm& other);

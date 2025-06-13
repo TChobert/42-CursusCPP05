@@ -26,8 +26,8 @@ AForm::AForm(void) : _name("Default"), _isSigned(false), _gradetoSign(150),
 	}
 }
 
-AForm::AForm(const std::string& name, bool isSigned, const int gradeToSign,
-	const int gradeToExecute) :_name(name), _isSigned(isSigned),
+AForm::AForm(const std::string& name, const int gradeToSign,
+	const int gradeToExecute) :_name(name), _isSigned(false),
 	_gradetoSign(gradeToSign), _gradetoExecute(gradeToExecute) {
 	//std::cout << "Form: parametrized constructor called" << std::endl;
 	if (gradeToSign > 150 ||  gradeToExecute > 150) {
@@ -97,6 +97,6 @@ const char	*AForm::FormNotSignedException::what() const throw() {
 ///// OPERATOR << /////
 
 std::ostream&	operator<<(std::ostream& os, const AForm& form) {
-	os << "Form name: " << form.getName() << ", signed: " << form.getSignStatus() << ", requiered grade to sign: " << form.getGradeToSign() << ", requiered grade to execute: " << form.getGradeToExecute() << ".";
+	os << "Form name: " << form.getName() << ", signed: " << form.getSignStatus() << ", required grade to sign: " << form.getGradeToSign() << ", required grade to execute: " << form.getGradeToExecute() << ".";
 	return (os);
 }

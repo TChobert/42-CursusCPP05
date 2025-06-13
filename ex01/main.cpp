@@ -57,6 +57,13 @@ int	main(void) {
 	}
 
 	try {
+		Form	invalidFormTooHigh("Invalid", -52, 22);
+	}
+	catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+
+	try {
 		Form	invalidFormLow("Invalid", 22, 185);
 	}
 	catch (const std::exception& e) {
@@ -83,12 +90,17 @@ int	main(void) {
 
 	std::cout << RESET << std::endl;
 
+	std::cout << GREEN << "======> VALID FORM SIGN ATTEMPTS <======" << std::endl;
+
 	// VALID FORM SIGN ATTEMPT
 
-	Form	formToSignValid("ToSignInvalid", 20, 50);
+	Form	formToSignValid("ToSignValid", 20, 50);
 	Bureaucrat	signer2("Random2", 15);
 
 	signer2.signForm(formToSignValid);
+	signer2.signForm(formToSignValid);
+
+	std::cout << RESET << std::endl;
 
 	return (EXIT_SUCCESS);
 }

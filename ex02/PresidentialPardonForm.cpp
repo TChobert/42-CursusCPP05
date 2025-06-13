@@ -14,11 +14,11 @@
 
 ///// CANONICAL /////
 
-PresidentialPardonForm::PresidentialPardonForm(void) : AForm("PresidentialPardonForm", false, 25, 5), _target("Default") {
+PresidentialPardonForm::PresidentialPardonForm(void) : AForm("PresidentialPardonForm", 25, 5), _target("Default") {
 	//std::cout << "PresidentialPardonForm: default constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string& target) : AForm("PresidentialPardonForm", false, 25, 5), _target(target) {
+PresidentialPardonForm::PresidentialPardonForm(const std::string& target) : AForm("PresidentialPardonForm", 25, 5), _target(target) {
 	//std::cout << "PresidentialPardonForm: parametrized constructor called" << std::endl;
 }
 

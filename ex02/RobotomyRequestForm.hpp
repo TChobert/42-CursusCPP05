@@ -13,6 +13,7 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
 
+# include <cstdlib>
 # include "AForm.hpp"
 # include "Bureaucrat.hpp"
 

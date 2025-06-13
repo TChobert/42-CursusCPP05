@@ -14,11 +14,11 @@
 
 ///// CANONICAL /////
 
-ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("ShrubberyCreationForm", false, 145, 137), _target("target") {
+ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("ShrubberyCreationForm", 145, 137), _target("target") {
 	//std::cout << "ShrubberyCreationForm: default constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("ShrubberyCreationForm", false, 145, 137), _target(target) {
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("ShrubberyCreationForm", 145, 137), _target(target) {
 	//std::cout << "ShrubberyCreationForm: parametrized constructor called" << std::endl;
 }
 

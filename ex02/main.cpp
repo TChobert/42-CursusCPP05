@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ctime>
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
@@ -25,6 +26,7 @@
 
 int	main(void) {
 
+	srand(time(NULL));
 	Bureaucrat	stagiaire;
 	Bureaucrat	middle("Joseph", 25);
 	Bureaucrat	superior("Superior", 1);
@@ -37,6 +39,10 @@ int	main(void) {
 	AForm	*pardon = new PresidentialPardonForm("Joe");
 	AForm	*shrubbery = new ShrubberyCreationForm("shrub");
 
+	RobotomyRequestForm original("original");
+	RobotomyRequestForm copy;
+	copy = original;
+
 	middle.signForm(*robotomy);
 	middle.executeForm(*robotomy);
 	std::cout << std::endl;
@@ -47,6 +53,9 @@ int	main(void) {
 
 	superior.signForm(*shrubbery);
 	superior.executeForm(*shrubbery);
+
+	superior.signForm(copy);
+	superior.executeForm(copy);
 
 	std::cout << RESET << std::endl;
 
@@ -81,8 +90,10 @@ int	main(void) {
 
 	delete robotomy;
 	delete pardon;
-	delete robotomy2;
 	delete shrubbery;
+	delete robotomy2;
+	delete pardon2;
+	delete shrubbery2;
 
 	return (EXIT_SUCCESS);
 }

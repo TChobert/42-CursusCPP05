@@ -14,11 +14,11 @@
 
 ///// CANONICAL /////
 
-RobotomyRequestForm::RobotomyRequestForm(void) : AForm("RobotomyRequestForm", false, 72, 45), _target("Default") {
+RobotomyRequestForm::RobotomyRequestForm(void) : AForm("RobotomyRequestForm", 72, 45), _target("Default") {
 	//std::cout << "RobotomyRequestForm: default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("RobotomyRequestForm", false, 72, 45), _target(target) {
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("RobotomyRequestForm", 72, 45), _target(target) {
 	//std::cout << "RobotomyRequestForm: parametrized constructor called" << std::endl;
 }
 
