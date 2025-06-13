@@ -32,6 +32,7 @@ endif
 SRCS += main.cpp
 SRCS += Bureaucrat.cpp
 SRCS += AForm.cpp
+SRCS += ShrubberyCreationForm.cpp
 SRCS += RobotomyRequestForm.cpp
 SRCS += PresidentialPardonForm.cpp
 
@@ -40,6 +41,7 @@ SRCS += PresidentialPardonForm.cpp
 INCLUDES_DIR := .
 
 INCLUDES += Bureaucrat.hpp
+INCLUDES += ShrubberyCreationForm.hpp
 INCLUDES += AForm.hpp
 INCLUDES += RobotomyRequestForm.hpp
 INCLUDES += PresidentialPardonForm.hpp

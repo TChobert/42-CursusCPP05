@@ -41,6 +41,33 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void) {
 
 ///// MEMBERS FUNCTIONS /////
 
+std::string	ShrubberyCreationForm::getTarget(void) const {
+	return (_target);
+}
+
+void	ShrubberyCreationForm::printAsciiTrees(const std::string& target) const {
+
+	std::ofstream	fileStream((target + "_shrubbery").c_str());
+	if (fileStream.is_open() == false) {
+		throw std::runtime_error("ShrubberyCreationForm: File creation failed " + target);
+	}
+	for (size_t i = 0; i < 3; ++i) {
+		fileStream << "       _-_" << std::endl;
+	fileStream << "    /~~   ~~\\" << std::endl;
+	fileStream << " /~~         ~~\\" << std::endl;
+	fileStream << "{               }" << std::endl;
+	fileStream << " \\  _-     -_  /" << std::endl;
+	fileStream << "   ~  \\\\ //  ~" << std::endl;
+	fileStream << "_- -   | | _- _" << std::endl;
+	fileStream << "  _ -  | |   -_" << std::endl;
+	fileStream << "      // \\\\" << std::endl;
+	}
+	fileStream.close();
+	if (fileStream.fail()) {
+		throw std::runtime_error("ShrubberyRequestForm: failed to close file properly " + target);
+	}
+}
+
 void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 	if (getSignStatus() == false) {
 		throw FormNotSignedException();
@@ -48,8 +75,5 @@ void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 	if (executor.getGrade() > getGradeToExecute()) {
 		throw GradeTooLowException();
 	}
-	std::ofstream	file((_target + "_shrubbery").c_str());
-	for (size_t i = 0; i < 3; ++i) {
-		
-	}
+	printAsciiTrees(getTarget());
 }

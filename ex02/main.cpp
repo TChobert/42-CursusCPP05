@@ -12,6 +12,7 @@
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
@@ -56,10 +57,13 @@ int	main(void) {
 
 	AForm	*robotomy = new RobotomyRequestForm("Bender");
 	AForm	*pardon = new PresidentialPardonForm("Joe");
+	AForm	*shrubbery = new ShrubberyCreationForm("shrub");
 	middle.signForm(*robotomy);
 	middle.executeForm(*robotomy);
 	superior.signForm(*pardon);
 	superior.executeForm(*pardon);
+	superior.signForm(*shrubbery);
+	superior.executeForm(*shrubbery);
 
 	// INVALID FORM EXECUTIONS
 
@@ -77,6 +81,7 @@ int	main(void) {
 	delete robotomy;
 	delete pardon;
 	delete robotomy2;
+	delete shrubbery;
 
 	return (EXIT_SUCCESS);
 }
