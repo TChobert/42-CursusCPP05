@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
-# include <string>
 # include <iostream>
+# include <string>
 
 class	Bureaucrat;
 
-class Form {
+class AForm {
 
 	private:
 
@@ -29,18 +29,19 @@ class Form {
 
 	public:
 
-	Form(void);
-	Form(const std::string& name, const int gradeToSign,
+	AForm(void);
+	AForm(const std::string& name, const int gradeToSign,
 			const int gradeToExecute);
-	Form(const Form& other);
-	Form&	operator=(const Form& other);
-	~Form(void);
+	AForm(const AForm& other);
+	AForm&	operator=(const AForm& other);
+	virtual ~AForm(void);
 
 	std::string		getName(void) const;
 	bool			getSignStatus(void) const;
 	int				getGradeToSign(void) const;
 	int				getGradeToExecute(void) const;
 	void			beSigned(const Bureaucrat& bureaucrat);
+	virtual void	execute(const Bureaucrat& executor) const = 0;
 
 	class GradeTooHighException: public std::exception {
 		virtual const char *what() const throw();
@@ -48,8 +49,11 @@ class Form {
 	class GradeTooLowException: public std::exception {
 		virtual const char *what() const throw();
 	};
+	class FormNotSignedException: public std::exception {
+		virtual const char *what() const throw();
+	};
 };
 
-std::ostream&	operator<<(std::ostream& os, const Form& form);
+std::ostream&	operator<<(std::ostream& os, const AForm& form);
 
 #endif

@@ -15,6 +15,7 @@
 
 # include <cstdlib>
 # include <iostream>
+# include "AForm.hpp"
 
 class Bureaucrat {
 
@@ -35,6 +36,8 @@ class Bureaucrat {
 	int			getGrade(void) const;
 	void		incrementGrade(int value);
 	void		decrementGrade(int value);
+	void		signForm(AForm& form) const;
+	void		executeForm(AForm const & form) const;
 
 	class GradeTooHighException: public std::exception {
 		virtual const char *what() const throw();
