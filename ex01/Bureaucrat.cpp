@@ -54,7 +54,7 @@ int	Bureaucrat::getGrade(void) const {
 	return (_grade);
 }
 
-void	Bureaucrat::incrementGrade(unsigned int value) {
+void	Bureaucrat::incrementGrade(int value) {
 	if ((_grade - value) < 1) {
 		throw GradeTooHighException();
 	}
@@ -62,7 +62,7 @@ void	Bureaucrat::incrementGrade(unsigned int value) {
 	std::cout << _name << ": is now at grade: " << _grade << std::endl;
 }
 
-void	Bureaucrat::decrementGrade(unsigned int value) {
+void	Bureaucrat::decrementGrade(int value) {
 	if ((_grade + value) > 150) {
 		throw GradeTooLowException();
 	}

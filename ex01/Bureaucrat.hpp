@@ -34,8 +34,8 @@ class Bureaucrat {
 
 	std::string	getName(void) const;
 	int			getGrade(void) const;
-	void		incrementGrade(unsigned int value);
-	void		decrementGrade(unsigned int value);
+	void		incrementGrade(int value);
+	void		decrementGrade(int value);
 	void		signForm(Form& form) const;
 
 	class GradeTooHighException: public std::exception {
