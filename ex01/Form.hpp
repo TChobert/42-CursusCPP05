@@ -30,7 +30,7 @@ class Form {
 	public:
 
 	Form(void);
-	Form(const std::string& name, bool isSigned, const int gradeToSign,
+	Form(const std::string& name, const int gradeToSign,
 			const int gradeToExecute);
 	Form(const Form& other);
 	Form&	operator=(const Form& other);

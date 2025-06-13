@@ -24,38 +24,47 @@ int	main(void) {
 
 	Bureaucrat	stagiaire;
 	Bureaucrat	middle("Joseph", 95);
-	Bureaucrat	copy;
-	Form		formA;
 
-	//std::cout << formA << std::endl;
+	std::cout << GREEN << "======> VALID FORM INSTANCIATIONS <======" << std::endl;
+	
+	Form	formA;
+	std::cout << formA << std::endl;
+
+	Form	formB("SuspectForm", 50, 50);
+	std::cout << formB << std::endl;
+
+	Form	formC(formB);
+	std::cout << formC << std::endl;
+
+	std::cout << RESET << std::endl;
 
 	// INVALID FORMS //
 
 	std::cout << RED << "======> INVALID FORM INSTANCIATIONS <======" << std::endl;
 
 	try {
-		Form	invalidFormLow("Invalid", false, 156, 22);
+		Form	invalidFormLow("Invalid", 156, 22);
 	}
 	catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 
 	try {
-		Form	invalidFormHigh("Invalid", false, 0, 22);
+		Form	invalidFormHigh("Invalid", 0, 22);
 	}
 	catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 
 	try {
-		Form	invalidFormLow("Invalid", false, 22, 185);
+		Form	invalidFormLow("Invalid", 22, 185);
 	}
 	catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 
 	try {
-		Form	invalidFormHigh("Invalid", false, 22, -12);
+		Form	invalidFormHigh("Invalid", 22, -12);
 	}
 	catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
@@ -63,52 +72,23 @@ int	main(void) {
 
 	std::cout << RESET << std::endl;
 
-	// INVALID BUREAUCRATS //
-
-	try {
-		Bureaucrat	invalidToLow("Aouch", 175);
-	}
-	catch (const std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-	try {
-		Bureaucrat	High("Aie", 0);
-	}
-	catch (const std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-
-	copy = stagiaire;
-
-	try {
-		stagiaire.decrementGrade(22);
-	}
-	catch (const std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-	try {
-		middle.incrementGrade(50);
-	}
-	catch (const std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-
 	// INVALID FORM SIGN ATTEMPT
 
-	Form	formToSignInvalid("ToSignInvalid", false, 20, 50);
+	std::cout << RED << "======> INVALID FORM SIGN ATTEMPTS <======" << std::endl;
+
+	Form	formToSignInvalid("ToSignInvalid", 20, 50);
 	Bureaucrat	signer("Random", 25);
 
 	signer.signForm(formToSignInvalid);
 
+	std::cout << RESET << std::endl;
+
 	// VALID FORM SIGN ATTEMPT
 
-	Form	formToSignValid("ToSignInvalid", false, 20, 50);
+	Form	formToSignValid("ToSignInvalid", 20, 50);
 	Bureaucrat	signer2("Random2", 15);
 
 	signer2.signForm(formToSignValid);
 
-	std::cout << stagiaire << std::endl;
-	std::cout << middle << std::endl;
-	std::cout << copy << std::endl;
 	return (EXIT_SUCCESS);
 }
