@@ -26,8 +26,8 @@ Form::Form(void) : _name("Default"), _isSigned(false), _gradetoSign(150),
 	}
 }
 
-Form::Form(const std::string& name, bool isSigned, const unsigned int gradeToSign,
-	const unsigned int gradeToExecute) :_name(name), _isSigned(isSigned),
+Form::Form(const std::string& name, bool isSigned, const int gradeToSign,
+	const int gradeToExecute) :_name(name), _isSigned(isSigned),
 	_gradetoSign(gradeToSign), _gradetoExecute(gradeToExecute) {
 	//std::cout << "Form: parametrized constructor called" << std::endl;
 	if (gradeToSign > 150 ||  gradeToExecute > 150) {
@@ -65,11 +65,11 @@ bool	Form::getSignStatus(void) const {
 	return (_isSigned);
 }
 
-unsigned int	Form::getGradeToSign(void) const {
+int	Form::getGradeToSign(void) const {
 	return (_gradetoSign);
 }
 
-unsigned int	Form::getGradeToExecute(void) const {
+int	Form::getGradeToExecute(void) const {
 	return (_gradetoExecute);
 }
 

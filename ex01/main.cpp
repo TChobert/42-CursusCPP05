@@ -13,6 +13,13 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
+# define NC "\e[0m"
+# define YELLOW "\e[1;33m"
+# define RED "\x1B[31m"
+# define GREEN "\x1B[32m"
+# define BLUE "\x1B[34m"
+# define RESET "\x1B[0m"
+
 int	main(void) {
 
 	Bureaucrat	stagiaire;
@@ -20,9 +27,11 @@ int	main(void) {
 	Bureaucrat	copy;
 	Form		formA;
 
-	std::cout << formA << std::endl;
+	//std::cout << formA << std::endl;
 
 	// INVALID FORMS //
+
+	std::cout << RED << "======> INVALID FORM INSTANCIATIONS <======" << std::endl;
 
 	try {
 		Form	invalidFormLow("Invalid", false, 156, 22);
@@ -30,24 +39,29 @@ int	main(void) {
 	catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
+
 	try {
 		Form	invalidFormHigh("Invalid", false, 0, 22);
 	}
 	catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
-		try {
+
+	try {
 		Form	invalidFormLow("Invalid", false, 22, 185);
 	}
 	catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
+
 	try {
 		Form	invalidFormHigh("Invalid", false, 22, -12);
 	}
 	catch (const std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
+
+	std::cout << RESET << std::endl;
 
 	// INVALID BUREAUCRATS //
 

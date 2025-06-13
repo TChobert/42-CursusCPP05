@@ -30,16 +30,16 @@ class Form {
 	public:
 
 	Form(void);
-	Form(const std::string& name, bool isSigned, const unsigned int gradeToSign,
-			const unsigned int gradeToExecute);
+	Form(const std::string& name, bool isSigned, const int gradeToSign,
+			const int gradeToExecute);
 	Form(const Form& other);
 	Form&	operator=(const Form& other);
 	~Form(void);
 
 	std::string		getName(void) const;
 	bool			getSignStatus(void) const;
-	unsigned int	getGradeToSign(void) const;
-	unsigned int	getGradeToExecute(void) const;
+	int				getGradeToSign(void) const;
+	int				getGradeToExecute(void) const;
 	void			beSigned(const Bureaucrat& bureaucrat);
 
 	class GradeTooHighException: public std::exception {

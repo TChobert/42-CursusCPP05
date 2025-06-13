@@ -31,8 +31,8 @@ class AForm {
 	public:
 
 	AForm(void);
-	AForm(const std::string& name, bool isSigned, const unsigned int gradeToSign,
-			const unsigned int gradeToExecute);
+	AForm(const std::string& name, bool isSigned, const int gradeToSign,
+			const int gradeToExecute);
 	AForm(const AForm& other);
 	AForm&	operator=(const AForm& other);
 	virtual ~AForm(void);
