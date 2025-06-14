@@ -37,27 +37,38 @@ int	main(void) {
 	std::cout << GREEN << "======> VALID FORM CREATIONS & EXECUTIONS <======" << std::endl;
 
 	Intern	intern;
-	AForm	*robotomy = intern.makeForm("I want a robotomy form", "Bender");
-	AForm	*pardon = intern.makeForm("presidential pardon", "Joe");
-	AForm	*shrubbery = intern.makeForm("shrubbery time!", "test");
 
-	RobotomyRequestForm original("original");
-	RobotomyRequestForm copy;
-	copy = original;
+	try {
+		AForm	*robotomy = intern.makeForm("robotomy request", "Bender");
+		middle.signForm(*robotomy);
+		middle.executeForm(*robotomy);
+		delete robotomy;
+		std::cout << std::endl;
+	}
+	catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 
-	middle.signForm(*robotomy);
-	middle.executeForm(*robotomy);
-	std::cout << std::endl;
+	try {
+		AForm	*pardon = intern.makeForm("presidential pardon", "Joe");
+		superior.signForm(*pardon);
+		superior.executeForm(*pardon);
+		delete pardon;
+		std::cout << std::endl;
+	}
+	catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 
-	superior.signForm(*pardon);
-	superior.executeForm(*pardon);
-	std::cout << std::endl;
-
-	superior.signForm(*shrubbery);
-	superior.executeForm(*shrubbery);
-
-	superior.signForm(copy);
-	superior.executeForm(copy);
+	try {
+		AForm	*shrubbery = intern.makeForm("shrubbery creation", "test");
+		superior.signForm(*shrubbery);
+		superior.executeForm(*shrubbery);
+		delete shrubbery;
+	}
+	catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 
 	std::cout << RESET << std::endl;
 
@@ -84,7 +95,7 @@ int	main(void) {
 	}
 	
 	try {
-		AForm	*pardon2 = intern.makeForm("", "");
+		AForm	*pardon2 = intern.makeForm("parrdon", "");
 		std::cout << "Unexpected success: " << pardon2 << std::endl;
 		delete pardon2;
 	}
@@ -93,12 +104,6 @@ int	main(void) {
 	}
 
 	std::cout << RESET << std::endl;
-
-	// CLEANUP
-
-	delete robotomy;
-	delete pardon;
-	delete shrubbery;
 
 	return (EXIT_SUCCESS);
 }

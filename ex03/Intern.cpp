@@ -49,14 +49,18 @@ AForm	*Intern::makeForm(const std::string& formName, const std::string& formTarg
 	for (size_t i = 0; i < FORMS_NB; ++i) {
 		if (formName.find(formNames[i]) != std::string::npos) {
 			type = formTypes(i);
+			break ;
 		}
 	}
 	switch (type) {
 		case SHRUBBERY:
+		 	std::cout << "Intern creates ShrubberyCreationForm" << std::endl;
 			return (new ShrubberyCreationForm(formTarget));
 		case ROBOTOMY:
+			std::cout << "Intern creates RobotomyRequestForm" << std::endl;
 			return (new RobotomyRequestForm(formTarget));
 		case PRESIDENTIAL:
+			std::cout << "Intern creates PresidentialPardonForm" << std::endl;
 			return (new PresidentialPardonForm(formTarget));
 		case UNKNOWN:
 			throw InvalidForm();
