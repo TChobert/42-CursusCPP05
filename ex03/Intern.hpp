@@ -15,7 +15,20 @@
 
 # include <string>
 # include <iostream>
+# include <exception>
 # include "AForm.hpp"
+# include "ShrubberyCreationForm.hpp"
+# include "RobotomyRequestForm.hpp"
+# include "PresidentialPardonForm.hpp"
+
+# define FORMS_NB 3
+
+typedef enum formTypes {
+	SHRUBBERY,
+	ROBOTOMY,
+	PRESIDENTIAL,
+	UNKNOWN
+};
 
 class Intern {
 
@@ -26,6 +39,10 @@ class Intern {
 	Intern&	operator=(const Intern& other);
 	~Intern(void);
 	AForm	*makeForm(const std::string& formName, const std::string& formTarget) const;
+
+	class InvalidForm: public std::exception {
+		virtual const char *what() const throw();
+	};
 };
 
 #endif

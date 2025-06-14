@@ -33,5 +33,33 @@ Intern::~Intern(void) {
 	//std::cout << "Intern: destructor called" << std::endl;
 }
 
+///// EXCEPTION /////
+
+const char	*Intern::InvalidForm::what() const throw() {
+	return ("Intern: Invalid form type");
+}
+
+///// MEMBER FUNCTION /////
+
 AForm	*Intern::makeForm(const std::string& formName, const std::string& formTarget) const {
+
+	static const std::string	formNames[FORMS_NB] = {"shrubbery", "robotomy", "presidential"};
+	formTypes	type = UNKNOWN;
+
+	for (size_t i = 0; i < FORMS_NB; ++i) {
+		if (formName.find(formNames[i]) != std::string::npos) {
+			type = formTypes(i);
+		}
+	}
+	switch (type) {
+		case SHRUBBERY:
+			return (new ShrubberyCreationForm(formTarget));
+		case ROBOTOMY:
+			return (new RobotomyRequestForm(formTarget));
+		case PRESIDENTIAL:
+			return (new PresidentialPardonForm(formTarget));
+		case UNKNOWN:
+			throw InvalidForm();
+	}
+	return (NULL);
 }
