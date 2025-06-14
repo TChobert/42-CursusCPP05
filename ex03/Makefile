@@ -8,7 +8,7 @@ RESET =\033[0m
 
 ## TARGET ##
 
-NAME := Bureaucrats
+NAME := Interns
 
 ## COMPILATION ##
 
@@ -35,6 +35,7 @@ SRCS += AForm.cpp
 SRCS += ShrubberyCreationForm.cpp
 SRCS += RobotomyRequestForm.cpp
 SRCS += PresidentialPardonForm.cpp
+SRCS += Intern.cpp
 
 ## INCLUDES ##
 
@@ -45,6 +46,7 @@ INCLUDES += ShrubberyCreationForm.hpp
 INCLUDES += AForm.hpp
 INCLUDES += RobotomyRequestForm.hpp
 INCLUDES += PresidentialPardonForm.hpp
+INCLUDES += Intern.hpp
 
 ## OBJECTS ##
 
@@ -56,7 +58,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -I$(INCLUDES_DIR) $(OBJS) -o $(NAME)
-	@echo "$(GREEN)Bureaucrats compiled!$(RESET)"
+	@echo "$(GREEN)Interns compiled!$(RESET)"
 
 $(OBJS): %.o: %.cpp
 	$(CC) $(CFLAGS) -I$(INCLUDES_DIR) -c $< -o $@

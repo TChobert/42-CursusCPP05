@@ -16,6 +16,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "Intern.hpp"
 
 # define NC "\e[0m"
 # define YELLOW "\e[1;33m"
@@ -33,11 +34,12 @@ int	main(void) {
 
 	// VALID FORM EXECUTIONS
 
-	std::cout << GREEN << "======> VALID FORM EXECUTIONS <======" << std::endl;
+	std::cout << GREEN << "======> VALID FORM CREATIONS & EXECUTIONS <======" << std::endl;
 
-	AForm	*robotomy = new RobotomyRequestForm("Bender");
-	AForm	*pardon = new PresidentialPardonForm("Joe");
-	AForm	*shrubbery = new ShrubberyCreationForm("shrub");
+	Intern	intern;
+	AForm	*robotomy = intern.makeForm("I want a robotomy form", "Bender");
+	AForm	*pardon = intern.makeForm("presidential pardon", "Joe");
+	AForm	*shrubbery = intern.makeForm("shrubbery time!", "test");
 
 	RobotomyRequestForm original("original");
 	RobotomyRequestForm copy;
@@ -61,28 +63,34 @@ int	main(void) {
 
 	// INVALID FORM EXECUTIONS
 
-	std::cout << RED << "======> INVALID FORM EXECUTIONS <======" << std::endl;
+	std::cout << RED << "======> INVALID FORM CREATIONS <======" << std::endl;
 
-	AForm	*robotomy2 = new RobotomyRequestForm("Lala");
-	AForm	*shrubbery2 = new ShrubberyCreationForm("shrub2");
-	AForm	*pardon2 = new PresidentialPardonForm("pardon2");
+	try {
+		AForm	*robotomy2 = intern.makeForm("bobotomy", "Aie");
+		std::cout << "Unexpected success: " << robotomy2 << std::endl;
+		delete robotomy2;
+	}
+	catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 
-	stagiaire.signForm(*robotomy2);
-	stagiaire.executeForm(*robotomy2);
-	superior.signForm(*robotomy2);
-	stagiaire.executeForm(*robotomy2);
-	std::cout << std::endl;
-
-	stagiaire.signForm(*shrubbery2);
-	stagiaire.executeForm(*shrubbery2);
-	superior.signForm(*shrubbery2);
-	stagiaire.executeForm(*shrubbery2);
-	std::cout << std::endl;
-
-	stagiaire.signForm(*pardon2);
-	stagiaire.executeForm(*pardon2);
-	superior.signForm(*pardon2);
-	stagiaire.executeForm(*pardon2);
+	try {
+		AForm	*shrubbery2 = intern.makeForm("shrubberie", "non");
+		std::cout << "Unexpected success: " << shrubbery2 << std::endl;
+		delete shrubbery2;
+	}
+	catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+	
+	try {
+		AForm	*pardon2 = intern.makeForm("", "");
+		std::cout << "Unexpected success: " << pardon2 << std::endl;
+		delete pardon2;
+	}
+	catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
 
 	std::cout << RESET << std::endl;
 
@@ -91,9 +99,6 @@ int	main(void) {
 	delete robotomy;
 	delete pardon;
 	delete shrubbery;
-	delete robotomy2;
-	delete pardon2;
-	delete shrubbery2;
 
 	return (EXIT_SUCCESS);
 }

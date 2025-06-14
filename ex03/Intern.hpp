@@ -23,12 +23,12 @@
 
 # define FORMS_NB 3
 
-typedef enum formTypes {
+typedef enum {
 	SHRUBBERY,
 	ROBOTOMY,
 	PRESIDENTIAL,
 	UNKNOWN
-};
+} formTypes;
 
 class Intern {
 

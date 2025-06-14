@@ -19,13 +19,13 @@ Intern::Intern(void) {
 }
 
 Intern::Intern(const Intern& other) {
+	(void)other;
 	//std::cout << "Intern: copy constructor called" << std::endl;
 }
 
 Intern&	Intern::operator=(const Intern& other) {
 	//std::cout << "Intern: assignement operator called" << std::endl;
-	if (this != &other) {
-	}
+	if (this != &other) {}
 	return (*this);
 }
 
